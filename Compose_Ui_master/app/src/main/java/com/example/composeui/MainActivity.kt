@@ -7,9 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.material.AlertDialog
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,6 +41,7 @@ fun Greeting() {
     var dlog by rememberSaveable { mutableStateOf(false) }
     var message by rememberSaveable { mutableStateOf("This is alert Dialog") }
     Column {
+        //  ボタンをタップするとカウントアップ
         Box(
             Modifier.clickable (
                 onClick = {counts++},
@@ -54,8 +57,11 @@ fun Greeting() {
                 )
             }
         )
+
         // 仕切り
         Divider(thickness = 10.dp)
+
+        //  ボタン回数の合計を表示
         Box(
             Modifier.clickable (
                 onClick = {
@@ -76,6 +82,44 @@ fun Greeting() {
                 )
             }
         )
+        // 仕切り
+        Divider(thickness = 50.dp)
+
+        // ダイアログ表示
+        Box(
+            Modifier.clickable (
+                onClick = {dlog = true},
+                enabled = true
+            ),
+            content = {
+                Text(
+                    text = "Show Dialog",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        color = MaterialTheme.colors.primary
+                        )
+                )
+            }
+        )
+        if(dlog){
+            AlertDialog(
+                onDismissRequest = {dlog = false},
+                title = { Text("Alert Dialog") },
+                text = { Text("This is alert Dialog") },
+                confirmButton = {
+                    TextButton(
+                        onClick = {dlog = false},
+                        content = { Text("OK") }
+                    )
+                },
+                dismissButton = {
+                    TextButton(
+                        onClick = {dlog = false},
+                        content = { Text("Cancel") }
+                    )
+                }
+            )
+        }
     }
 
 
