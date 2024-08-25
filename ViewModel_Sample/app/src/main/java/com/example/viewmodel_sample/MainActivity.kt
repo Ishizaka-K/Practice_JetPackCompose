@@ -1,6 +1,7 @@
 package com.example.viewmodel_sample
 
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -13,14 +14,16 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val viewModel = MainViewModel()
-        var text = viewModel.getPersonList().toString()
-        setContent {
-            MainScreen()
-        }
-
+        setContentView(R.layout.activity_main)
+        findViewById<TextView>(R.id.text1).text = updateData(viewModel)
     }
-}
-@Composable
-fun MainScreen() {
-    Text(text = "Hello, World!")
+
+    fun updateData(viewModel: MainViewModel): String {
+        val data = viewModel.getPersonList()
+        var people = ""
+        for (person in data) {
+            people += person.name +person.age +person.email +"\n"
+        }
+        return people
+    }
 }
