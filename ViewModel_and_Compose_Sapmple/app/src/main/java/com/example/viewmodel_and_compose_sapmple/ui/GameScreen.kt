@@ -41,7 +41,7 @@ import androidx.compose.material3.MaterialTheme.typography
 
 @Composable
 fun GameScreen() {
-    val mediumPadding = dimensionResource((16.dp).toInt())
+    val mediumPadding = 16.dp
 
     Column(
         modifier = Modifier
