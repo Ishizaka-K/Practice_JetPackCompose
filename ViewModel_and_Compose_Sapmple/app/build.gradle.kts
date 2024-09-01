@@ -50,6 +50,7 @@ dependencies {
     // https://developer.android.com/jetpack/androidx/releases/compose-foundation?hl=ja#structure
     implementation("androidx.compose.ui:ui:1.6.8")
     implementation("androidx.compose.ui:ui-tooling:1.6.8")
+    implementation("androidx.compose.ui:ui:1.6.8")
     implementation("androidx.compose.foundation:foundation:1.6.8")
     implementation("androidx.compose.animation:animation:1.6.8")
     implementation("androidx.compose.material:material:1.6.8")
