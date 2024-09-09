@@ -38,6 +38,7 @@ import com.example.viewmodel_and_compose_sapmple.R
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.MaterialTheme.shapes
 import androidx.compose.material3.MaterialTheme.typography
+import com.example.viewmodel_and_compose_sapmple.ui.theme.UnscrambleTheme
 
 @Composable
 fun GameScreen() {
