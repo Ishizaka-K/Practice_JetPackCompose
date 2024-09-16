@@ -63,4 +63,6 @@ dependencies {
     implementation(kotlin("script-runtime"))
     //material3
     implementation("androidx.compose.material3:material3:1.2.1")
+    //ViewModel
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
 }

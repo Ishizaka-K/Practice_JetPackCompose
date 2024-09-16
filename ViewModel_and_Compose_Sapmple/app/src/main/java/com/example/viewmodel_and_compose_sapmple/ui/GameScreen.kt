@@ -194,13 +194,14 @@ private fun FinalScoreDialog(
 
     AlertDialog(
         onDismissRequest = {
-            // Dismiss the dialog when the user clicks outside the dialog or on the back
-            // button. If you want to disable that functionality, simply use an empty
-            // onCloseRequest.
+
         },
+        //Congratulations
         title = { Text(text = stringResource(R.string.congratulations)) },
+        //You scored %d
         text = { Text(text = stringResource(R.string.you_scored, score)) },
         modifier = modifier,
+        //Exit Button
         dismissButton = {
             TextButton(
                 onClick = {
@@ -210,6 +211,7 @@ private fun FinalScoreDialog(
                 Text(text = stringResource(R.string.exit))
             }
         },
+        //Play Again Button
         confirmButton = {
             TextButton(onClick = onPlayAgain) {
                 Text(text = stringResource(R.string.play_again))
