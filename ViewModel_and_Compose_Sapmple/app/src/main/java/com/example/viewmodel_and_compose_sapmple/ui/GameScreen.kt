@@ -51,19 +51,26 @@ fun GameScreen() {
             .safeDrawingPadding()
             .padding(mediumPadding),
         verticalArrangement = Arrangement.Center,
+        // Start : 左揃え
+        // Center : 中央揃え
+        // End : 右揃え
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+        // タイトル
         Text(
+            // ViewModel_and_Compose_Sapmple
             text = stringResource(R.string.app_name),
+            // 文字のサイズ
             style = typography.titleLarge,
         )
+        //ゲーム画面
         GameLayout(
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
                 .padding(mediumPadding)
         )
+        // Columsの中にColumnがある
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -71,7 +78,7 @@ fun GameScreen() {
             verticalArrangement = Arrangement.spacedBy(mediumPadding),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-
+            //Submitボタン
             Button(
                 modifier = Modifier.fillMaxWidth(),
                 onClick = { }
@@ -81,7 +88,7 @@ fun GameScreen() {
                     fontSize = 16.sp
                 )
             }
-
+            //Skipボタン
             OutlinedButton(
                 onClick = { },
                 modifier = Modifier.fillMaxWidth()
@@ -103,6 +110,7 @@ fun GameStatus(score: Int, modifier: Modifier = Modifier) {
         modifier = modifier
     ) {
         Text(
+            //Score: %d
             text = stringResource(R.string.score, score),
             style = typography.headlineMedium,
             modifier = Modifier.padding(8.dp)
@@ -119,6 +127,7 @@ fun GameLayout(modifier: Modifier = Modifier) {
         elevation = CardDefaults.cardElevation(defaultElevation = 5.dp)
     ) {
         Column(
+            // 感覚を開けて配置
             verticalArrangement = Arrangement.spacedBy(mediumPadding),
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(mediumPadding)
@@ -129,22 +138,28 @@ fun GameLayout(modifier: Modifier = Modifier) {
                     .background(colorScheme.surfaceTint)
                     .padding(horizontal = 10.dp, vertical = 4.dp)
                     .align(alignment = Alignment.End),
+                //%d/10
                 text = stringResource(R.string.word_count, 0),
                 style = typography.titleMedium,
                 color = colorScheme.onPrimary
             )
+            //ゲームタイトル
             Text(
                 text = "scrambleun",
                 style = typography.displayMedium
             )
+            //ゲームの説明
+            //Unscramble the word using the given letters
             Text(
                 text = stringResource(R.string.instructions),
                 textAlign = TextAlign.Center,
                 style = typography.titleMedium
             )
+            //入力欄
             OutlinedTextField(
                 value = "",
                 singleLine = true,
+                // 入力欄の形状
                 shape = shapes.large,
                 modifier = Modifier.fillMaxWidth(),
                 colors = TextFieldDefaults.colors(
