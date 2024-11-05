@@ -16,4 +16,11 @@ class BatteryViewModel(private val batteryLevelDao: BatteryLevelDao) : ViewModel
             batteryLevelDao.insertBatteryLevel(BatteryLevel(level = level, timestamp = currentTime))
         }
     }
+
+    // バッテリーデータを全削除する関数
+    fun clearBatteryData() {
+        viewModelScope.launch {
+            batteryLevelDao.clearAllBatteryLevels()
+        }
+    }
 }

@@ -12,4 +12,8 @@ interface BatteryLevelDao {
 
     @Query("SELECT * FROM battery_levels ORDER BY timestamp DESC")
     fun getAllBatteryLevels(): Flow<List<BatteryLevel>>
+
+    // バッテリーデータを全削除するメソッド
+    @Query("DELETE FROM battery_levels")
+    suspend fun clearAllBatteryLevels()
 }
