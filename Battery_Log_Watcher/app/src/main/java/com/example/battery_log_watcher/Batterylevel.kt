@@ -2,9 +2,9 @@ package com.example.battery_log_watcher
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "battery_level")
+@Entity(tableName = "battery_levels")
 data class BatteryLevel(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
+    @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val level: Int,
-    val timestamp: Long
+    val timestamp: String
 )

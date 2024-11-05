@@ -1,11 +1,19 @@
-package com.example.battery_log_watcher
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.stateIn
+import com.example.battery_log_watcher.BatteryLevel
+import com.example.battery_log_watcher.BatteryLevelDao
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
-class BatteryViewModel(private val dao: BatteryLevelDao) : ViewModel() {
-    val batteryLevels = dao.getBatteryLevels()
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+class BatteryViewModel(private val batteryLevelDao: BatteryLevelDao) : ViewModel() {
+    val batteryLevels: Flow<List<BatteryLevel>> = batteryLevelDao.getAllBatteryLevels()
+
+    fun logBatteryLevel(level: Int) {
+        val currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"))
+        viewModelScope.launch {
+            batteryLevelDao.insertBatteryLevel(BatteryLevel(level = level, timestamp = currentTime))
+        }
+    }
 }
