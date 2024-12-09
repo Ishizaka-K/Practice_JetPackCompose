@@ -1,4 +1,5 @@
 package com.example.battery_log_watcher
+import BatteryViewModel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 
